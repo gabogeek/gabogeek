@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa del Metro CDMX</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+    <div id="map" style="height: 600px;"></div>
+
+    <script>
+        // Crear el mapa
+        var map = L.map('map').setView([19.4326, -99.1332], 12); // Coordenadas de CDMX
+
+        // Agregar capa base (OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Datos de las estaciones del metro de la CDMX (Ejemplo con algunas estaciones)
+        var estacionesMetro = [
+            { "nombre": "Pino Suarez", "lat": 19.4344, "lng": -99.1358 },
+            { "nombre": "Bellas Artes", "lat": 19.4369, "lng": -99.1444 },
+            { "nombre": "Zócalo/Tenochtitlan", "lat": 19.4331, "lng": -99.1314 },
+            { "nombre": "Chabacano", "lat": 19.3581, "lng": -99.1635 },
+            { "nombre": "Pantitlán", "lat": 19.4169, "lng": -99.0703 }
+        ];
+
+        // Agregar marcadores para las estaciones
+        estacionesMetro.forEach(function(estacion) {
+            L.marker([estacion.lat, estacion.lng])
+                .addTo(map)
+                .bindPopup("<b>" + estacion.nombre + "</b>");
+        });
+    </script>
+</body>
+</html>
