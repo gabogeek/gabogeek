@@ -3,12 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa del Metro CDMX</title>
+    <title>Mapa de Estaciones del Metro CDMX</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .content {
+            padding: 20px;
+        }
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <div id="map" style="height: 600px;"></div>
+
+    <header>
+        <h1>Mapa de las Estaciones del Metro CDMX</h1>
+        <p>Un mapa interactivo que muestra las ubicaciones de las estaciones del Sistema de Transporte Colectivo (Metro) en la Ciudad de México.</p>
+    </header>
+
+    <div class="content">
+        <h2>Acerca de este mapa</h2>
+        <p>Este mapa utiliza la librería <strong>Leaflet</strong> para mostrar un mapa interactivo de las estaciones del metro en la Ciudad de México. Puedes hacer clic sobre cada marcador para ver el nombre de la estación y explorar el sistema de transporte de la ciudad.</p>
+        <p>Las estaciones están representadas como puntos en el mapa, y puedes acercar o alejar el mapa para obtener una mejor vista.</p>
+
+        <!-- Aquí es donde se mostrará el mapa -->
+        <div id="map"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025. Todos los derechos reservados.</p>
+    </footer>
 
     <script>
         // Crear el mapa
@@ -35,5 +82,6 @@
                 .bindPopup("<b>" + estacion.nombre + "</b>");
         });
     </script>
+    
 </body>
 </html>
